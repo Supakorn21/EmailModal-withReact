@@ -6,9 +6,8 @@ const EmailModal = () => {
   const newState = useStateContext();
   useEffect(() => {
     document.body.addEventListener("mouseleave", () => {
-      if(Cookies.get('modalOpenBefore') !== "true") {
-          newState.openModalAction();
-
+      if (Cookies.get("modalOpenBefore") !== "true") {
+        newState.openModalAction();
       }
     });
   }, []);
@@ -40,7 +39,13 @@ const EmailModal = () => {
               notifications, discounts, and our award winning newsletter.
             </span>
           </p>
-          <div className={`email-modal__error-message ${newState.showEmailError ? 'email-modal__error-message--active' : ''}`}>
+          <div
+            className={`email-modal__error-message ${
+              newState.showEmailError
+                ? "email-modal__error-message--active"
+                : ""
+            }`}
+          >
             Sorry this is not a valid email
           </div>
           <div className="email-modal__form-group">
@@ -53,7 +58,9 @@ const EmailModal = () => {
               onBlur={newState.checkForEmail}
               onFocus={newState.removeErrorMessage}
             />
-            <button className="email-modal__button" type="submit">Send</button>
+            <button className="email-modal__button" type="submit">
+              Send
+            </button>
           </div>
           <div
             className="email-modal__decline-offer"
@@ -65,7 +72,11 @@ const EmailModal = () => {
         <div className="email-modal__side-img">
           <img src="img/pexels-photo-4462782.jpeg" alt="shoes" />
         </div>
-        <div className={`email-thank ${newState.formCompleted ? 'email-thank--success' : '' }`}>
+        <div
+          className={`email-thank ${
+            newState.formCompleted ? "email-thank--success" : ""
+          }`}
+        >
           <div className="email-thank__title">Thank You</div>
           <p className="email-thank__message">
             check your email we sent you some instructions... by the way welcome
