@@ -9,10 +9,13 @@ export function useStateContext() {
 
 export function EMProvider({ children }) {
   const [modalOpen, setModalOpen] = useState(false);
+  const [showEmailError, setShowEmailError] = useState(false);
+
   const openModalAction = () => {
     Cookies.set("modalOpenBefore", true, { expires: 7 });
     setModalOpen(true);
   };
+  
   const closeModalAction = () => {
     setModalOpen(false);
   };
@@ -21,7 +24,10 @@ export function EMProvider({ children }) {
   const handleEmailInput = (e) => {
     setEmail(e.target.value);
   };
-  const [showEmailError, setShowEmailError] = useState(false);
+
+
+
+
   const checkForEmail = (e) => {
     function emailIsValid(text) {
       return /\S+@\S+\.\S+/.test(text);
@@ -31,10 +37,12 @@ export function EMProvider({ children }) {
     }
     console.log("checking for email");
   };
+
   const removeErrorMessage = (e) => {
     setShowEmailError(false);
     console.log("remove message");
   };
+
   const [formCompleted, setFormCompleted] = useState(false);
   const submittedForm = (e) => {
     e.preventDefault();
